@@ -1,17 +1,16 @@
+import CoffeeCard from './CoffeeCard.jsx'
 
-
-function CoffeeList(params) {
+function CoffeeList({data}) {
     return(
-        <>
-            <tr>
-                <th>nazwa</th><th>typ</th><th>opis</th>
-            </tr>
-            <tr>
-                <td>ohio</td><td>milk</td><td>uhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh</td><td className='new'>nowość</td>
-            </tr>
-
-        </>
+        <div className='coffe-list'>
+            {data.map(
+                (coffee)=>(
+                    <CoffeeCard id={coffee.id} name={coffee.name} type={coffee.type} desc={coffee.description} isNew={coffee.isNew}/>
+                )
+            )}
+        </div>
     )
+    
 }
 
 
