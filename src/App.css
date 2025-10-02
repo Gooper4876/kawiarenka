@@ -1,0 +1,16 @@
+th {
+  border: 3px solid black;
+}
+table{
+  border-collapse: collapse;
+}
+td.new{
+  background-color: wheat;
+  padding: 10px;
+}
+
+.card{
+  height: 300px;
+  width: 200px;
+  
+}
