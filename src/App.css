@@ -12,5 +12,11 @@ td.new{
 .card{
   height: 300px;
   width: 200px;
+  box-shadow: 10px 10px;
+  border: 1px black solid;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  float: left;
+  
   
 }
