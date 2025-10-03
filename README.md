@@ -1,16 +1,33 @@
-# React + Vite
+# Interaktywne menu kawiarni
+## Cel
+Stworzenie od podstaw interaktywnej aplikacji, która będzie pełnić funkcję cyfrowego menu dla kawiarni. W trakcie projektu potrzebne będą umiejętności z zakresu:
+- Tworzenia aplikacji
+- Budowania komponentów
+- Zarządzania stanem
+- Renderowania warunkowego
+- Korzystania z gita w podstawowym zakresie
+## Zadanie
+Przygotowanie aplikacji zostało podzielone na 4 etapy. **Wskazane jest wykonywać committy jak najczęściej, z dokładną i czytelną wiadomością.** Dobrym momentem na committowanie jest zakończenie etapu, ale **silnie sugerowane** jest committowanie **jeszcze częściej**, przy każdej działającej zmianie.
+### Etap 1 - Podstawowa struktura
+W głównym komponencie `App.jsx` należy stworzyć tablicę obiektów, która będzie reprezentować dane o kawach. Każdy obiekt powinien zawierać co najmniej:
+- id
+- nazwa
+- typ (typ kawy - espresso, przelew, mrożona etc.)
+- opis
+- nowość (boolean true/false)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Następnie należy przygotować stronę w taki sposób, aby renderować całą, niefiltrowaną listę kaw na stronie.
+### Etap 2 - Podział na komponenty
+Jeśli poprzedni etap został wykonany cały w `App.jsx`, to należy go rozbić na komponenty `CoffeeCard.jsx` oraz `CoffeeList.jsx`.
 
-Currently, two official plugins are available:
+`CoffeeList.jsx` to komponent, do którego przekazywana jest tablica z kawami jako props, które potem mapowane są do `CoffeeCard.jsx`. Tablica musi znajdować się w `App.jsx`.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Należy również stworzyć komponent `FilterMenu.jsx`, który będzie odpowiedzialny za wyświetlanie przycisków do filtrowania różnych pozycji w menu. Przykładowe dostępne kontrolki zawierałyby: Espresso, Przelewy, Mrożone.
+### Etap 3 - Implementacja stanu
+W głównym komponencie aplikacji `App.jsx` należy zaimplementować stan, który będzie reprezentować aktualnie wybrany filtr typu kawy. Domyślnie wybrane mają być wszystkie kawy. Kliknięcie w przycisk z komponentu `FilterMenu.jsx` powinno zmieniać aktualizować ten stan.
+### Etap 4 - Renderowanie warunkowe
+Zmodyfikuj logikę aplikacji w taki sposób, aby do komponentu `CoffeeList.jsx` przekazywana była tylko ta część danych, która odpowiada aktualnie wybranemu filtrowi w stanie.
 
-## React Compiler
+Jeśli po wybraniu filtra nie jest wyświetlana żadna kawa, ponieważ przekazywana lista jest pusta, wyświetl komunikat, przykładowo "Przepraszamy, obecnie nie mamy kaw tego typu.".
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Należy wykorzystać renderowanie warunkowe w komponencie `CoffeeCard.jsx`. Jeśli dana kawa ma ustawioną właściwość "nowość" na "true", to na jej karcie powinien pojawić się dodatkowy element wizualny, jak np. czerwona etykieta "NOWOŚĆ!" w rogu karty.

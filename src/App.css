@@ -20,3 +20,14 @@ td.new{
   
   
 }
+
+.buttons{
+  width: 100%;
+  text-align: center;
+}
+
+button{
+  font-size: 200%;
+  font-family: 'Press Start 2P', cursive;
+  margin: 20px;
+}
